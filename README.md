@@ -1,24 +1,18 @@
-# README
+  Menus 
+    ex breakfast menu, dessert, wine
+  
+  Menu 
+    title string
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    has many items 
 
-Things you may want to cover:
+  Item 
+    item_name string
+    price float
+    menu_id fk
 
-* Ruby version
+    belongs to menu
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  breakfast menu
+    muffin $12.22 1
+    egg $ 2.33 1 
