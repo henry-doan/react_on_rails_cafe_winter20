@@ -36,7 +36,20 @@ class MenuProvider extends Component {
 
   updateMenu = (id, menu) => {
     // update to the db
-    // update to the state
+    axios.put(`/api/menus/${id}`, { menu })
+      .then( res => {
+        // update to the state
+        const menus = this.state.menus.map( m => {
+          if (m.id === id) {
+            return res.data
+          } 
+          return m
+        })
+        this.setState({ menus })
+      })
+      .catch( err => {
+        console.log(err);
+      })
   }
 
   deleteMenu = (id) => {
