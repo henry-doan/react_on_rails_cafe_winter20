@@ -4,6 +4,7 @@ import axios from 'axios';
 import { MenuConsumer } from '../../providers/MenuProvider';
 import { Button, Icon } from 'semantic-ui-react';
 import MenuForm from './MenuForm';
+import Moment from 'react-moment';
 
 class Menu extends Component {
   state = { id: 0, title: '', created_at: '', updated_at: '', editing: false }
@@ -31,7 +32,7 @@ class Menu extends Component {
     return(
       <>
         <h1>{title}</h1>
-        <h5>{updated_at}</h5>
+        <h5>Last updated: <Moment format="MM/DD/YYYY">{updated_at}</Moment></h5>
         <Button icon color='red' onClick={() => deleteMenu(id)}>
           <Icon name='trash' />
         </Button>
