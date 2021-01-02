@@ -29,12 +29,24 @@ class ItemProvider extends Component {
       })
   }
 
+  deleteItem = (menuId, id) => {
+    axios.delete(`/api/menus/${menuId}/items/${id}`)
+      .then( res => {
+        const { items } = this.state 
+        this.setState({ items: items.filter( i => i.id !== id)})
+      })
+      .catch( err => {
+        console.log(err);
+      })
+  }
+
   render() {
     return(
       <ItemContext.Provider value={{
         ...this.state,
         getAllMenuItem: this.getAllMenuItem,
         addItem: this.addItem,
+        deleteItem: this.deleteItem,
       }}>
         { this.props.children }
       </ItemContext.Provider>

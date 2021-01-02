@@ -1,10 +1,10 @@
 import { Component } from 'react';
-import { Grid, Card, Image } from 'semantic-ui-react';
+import { Grid, Card, Image, Button } from 'semantic-ui-react';
 
 class ItemList extends Component {
 
   render() {
-    const { items } = this.props
+    const { items, deleteItem, menuId } = this.props
     return(
       <Grid columns={3}>
         {
@@ -19,9 +19,7 @@ class ItemList extends Component {
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <a>
-                    22 Friends
-                  </a>
+                  <Button icon='trash' color='red' onClick={() => deleteItem(menuId, i.id)} />
                 </Card.Content>
               </Card>
             </Grid.Column>

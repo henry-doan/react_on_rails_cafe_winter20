@@ -10,7 +10,7 @@ class Items extends Component {
   }
 
   render() {
-    const { menuId, addItem, items } = this.props
+    const { menuId, addItem, items, deleteItem, } = this.props
     return(
       <>
         <ItemForm 
@@ -20,6 +20,7 @@ class Items extends Component {
         <ItemList 
           menuId={menuId}
           items={items}
+          deleteItem={deleteItem}
         />
       </>
     )
