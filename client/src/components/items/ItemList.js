@@ -1,33 +1,19 @@
-import { Component } from 'react';
-import { Grid, Card, Image, Button } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
+import Item from './Item';
 
-class ItemList extends Component {
-
-  render() {
-    const { items, deleteItem, menuId } = this.props
-    return(
-      <Grid columns={3}>
-        {
-          items.map( i => 
-            <Grid.Column>
-              <Card>
-                <Image src={i.pic} wrapped ui={false} size='medium' />
-                <Card.Content>
-                  <Card.Header>{i.item_name}</Card.Header>
-                  <Card.Description>
-                    {i.price}
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <Button icon='trash' color='red' onClick={() => deleteItem(menuId, i.id)} />
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-          )
-        }
-      </Grid>
-    )
-  }
-}
+const ItemList = ({ items, deleteItem, menuId, updateItem }) => (
+  <Grid columns={3}>
+    {
+      items.map( i => 
+        <Item 
+          deleteItem={deleteItem}
+          menuId={menuId}
+          updateItem={updateItem}
+          {...i}
+        />
+      )
+    }
+  </Grid>
+)
 
 export default ItemList;

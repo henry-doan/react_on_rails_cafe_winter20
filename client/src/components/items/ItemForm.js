@@ -4,6 +4,13 @@ import { Form } from 'semantic-ui-react';
 class ItemForm extends Component {
   state = { item_name: '', price: 0.0, pic: '' }
 
+  componentDidMount() {
+    if (this.props.id) {
+      const { item_name, price, pic } = this.props
+      this.setState({ item_name, price, pic })
+    }
+  }
+
   handleChange = (e) => {
     const { name, value } = e.target
     this.setState({ [name]: value })
@@ -13,8 +20,14 @@ class ItemForm extends Component {
     e.preventDefault();
     const { price } = this.state
     this.setState({ price: parseFloat(price)})
-    const { addItem, menuId } = this.props
-    addItem(menuId, this.state)
+    if (this.props.id) {
+      const { menuId, updateItem, id, setOpen } = this.props
+      updateItem(menuId, id, this.state)
+      setOpen(false)
+    } else {
+      const { addItem, menuId } = this.props
+      addItem(menuId, this.state)
+    }
     this.setState({ item_name: '', price: 0.0, pic: '' })
   }
 

@@ -10,7 +10,7 @@ class Items extends Component {
   }
 
   render() {
-    const { menuId, addItem, items, deleteItem, } = this.props
+    const { menuId, addItem, items, deleteItem, updateItem } = this.props
     return(
       <>
         <ItemForm 
@@ -21,6 +21,7 @@ class Items extends Component {
           menuId={menuId}
           items={items}
           deleteItem={deleteItem}
+          updateItem={updateItem}
         />
       </>
     )

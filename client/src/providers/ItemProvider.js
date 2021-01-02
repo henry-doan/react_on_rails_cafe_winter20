@@ -40,6 +40,22 @@ class ItemProvider extends Component {
       })
   }
 
+  updateItem = (menuId, id, item) => {
+    axios.put(`/api/menus/${menuId}/items/${id}`, { item })
+      .then(res => {
+        const items = this.state.items.map( i => {
+          if (i.id === id) {
+            return res.data
+          }
+          return i
+        })
+        this.setState({ items })
+      })
+      .catch( err => {
+        console.log(err);
+      })
+  }
+
   render() {
     return(
       <ItemContext.Provider value={{
@@ -47,6 +63,7 @@ class ItemProvider extends Component {
         getAllMenuItem: this.getAllMenuItem,
         addItem: this.addItem,
         deleteItem: this.deleteItem,
+        updateItem: this.updateItem,
       }}>
         { this.props.children }
       </ItemContext.Provider>
