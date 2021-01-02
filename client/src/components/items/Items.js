@@ -1,27 +1,35 @@
 import { Component } from 'react';
-import axios from 'axios';
+import { ItemConsumer } from '../../providers/ItemProvider';
+import ItemForm from './ItemForm';
 
 class Items extends Component {
-  state = { items: [] }
-
   componentDidMount() {
-    axios.get(`/api/menus/${this.props.menuId}/items`)
-      .then( res => {
-        const { items } = this.state 
-        this.setState({ items: [...items, res.data ]})
-      })
-      .catch( err => {
-        console.log(err);
-      })
+    const { getAllMenuItem, menuId } = this.props 
+    getAllMenuItem(menuId)
   }
 
   render() {
+    const { menuId, addItem } = this.props
     return(
       <>
-
+        <ItemForm 
+          menuId={menuId}
+          addItem={addItem}
+        />
       </>
     )
   }
 } 
 
-export default Items;
+const ConnectedItems = (props) => (
+  <ItemConsumer>
+    { value => 
+      <Items
+        {...value}
+        {...props}
+      />
+    }
+  </ItemConsumer>
+)
+
+export default ConnectedItems;

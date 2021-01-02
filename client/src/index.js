@@ -6,13 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css';
 import { BrowserRouter } from 'react-router-dom';
 import MenuProvider from './providers/MenuProvider';
+import ItemProvider from './providers/ItemProvider';
 
 ReactDOM.render(
   <React.StrictMode>
     <MenuProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ItemProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ItemProvider>
     </MenuProvider>
   </React.StrictMode>,
   document.getElementById('root')

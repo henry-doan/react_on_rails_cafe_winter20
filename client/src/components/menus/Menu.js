@@ -47,7 +47,7 @@ class Menu extends Component {
             <Icon name='pencil' />
           </Button>
         }
-      {/* <Items menuId={this.props.id} /> */}
+        <Items menuId={id} />
       </>
     )
   }
