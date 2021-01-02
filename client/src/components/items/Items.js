@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { ItemConsumer } from '../../providers/ItemProvider';
 import ItemForm from './ItemForm';
+import ItemList from './ItemList';
 
 class Items extends Component {
   componentDidMount() {
@@ -9,12 +10,16 @@ class Items extends Component {
   }
 
   render() {
-    const { menuId, addItem } = this.props
+    const { menuId, addItem, items } = this.props
     return(
       <>
         <ItemForm 
           menuId={menuId}
           addItem={addItem}
+        />
+        <ItemList 
+          menuId={menuId}
+          items={items}
         />
       </>
     )

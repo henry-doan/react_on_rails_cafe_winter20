@@ -11,8 +11,7 @@ class ItemProvider extends Component {
   getAllMenuItem = (menuId) => {
     axios.get(`/api/menus/${menuId}/items`)
       .then( res => {
-        const { items } = this.state 
-        this.setState({ items: [...items, res.data ]})
+        this.setState({ items: res.data })
       })
       .catch( err => {
         console.log(err);

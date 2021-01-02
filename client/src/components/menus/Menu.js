@@ -27,6 +27,7 @@ class Menu extends Component {
   render() {
     const { id, title, updated_at, editing } = this.state
     const { deleteMenu, updateMenu } = this.props
+    let menuId = this.props.match.params.id
     return(
       <>
         <h1>{title}</h1>
@@ -47,7 +48,7 @@ class Menu extends Component {
             <Icon name='pencil' />
           </Button>
         }
-        <Items menuId={id} />
+        <Items menuId={menuId} />
       </>
     )
   }
