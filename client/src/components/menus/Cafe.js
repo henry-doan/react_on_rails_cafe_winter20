@@ -6,7 +6,7 @@ const Cafe = () => (
   <MenuConsumer>
     { value => (
       <>
-        <h1>Cafe</h1>
+        <h1>DPL Cafe</h1>
         <MenuForm addMenu={value.addMenu} />
         <MenuList menus={value.menus} />
       </>
