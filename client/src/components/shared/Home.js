@@ -1,5 +1,7 @@
+import { AboutTitle } from '../styles/aboutStyle';
+
 const Home = () => (
-  <h1>Home Page</h1>
+  <AboutTitle>Home Page</AboutTitle>
 )
 
 export default Home;
