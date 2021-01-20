@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { ItemConsumer } from '../../providers/ItemProvider';
 import ItemForm from './ItemForm';
 import ItemList from './ItemList';
+import { Fade } from 'react-reveal';
 
 class Items extends Component {
   componentDidMount() {
@@ -13,10 +14,12 @@ class Items extends Component {
     const { menuId, addItem, items, deleteItem, updateItem } = this.props
     return(
       <>
-        <ItemForm 
-          menuId={menuId}
-          addItem={addItem}
-        />
+        <Fade left>
+          <ItemForm 
+            menuId={menuId}
+            addItem={addItem}
+          />
+        </Fade>
         <ItemList 
           menuId={menuId}
           items={items}
